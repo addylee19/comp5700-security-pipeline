@@ -122,6 +122,8 @@ def execute_kubescape_scan(
 
     if controls:
         command.extend(["control", ",".join(controls)])
+    else:
+        pass
 
     command.extend([
         extracted_dir,
@@ -146,48 +148,68 @@ def extract_project_yamls(zip_path: str, output_dir: str) -> None:
 
 def kubescape_json_to_dataframe(results_json_path: str) -> pd.DataFrame:
     """
-    Parse Kubescape JSON as defensively as possible because exact nesting can vary.
+    Parse Kubescape JSON defensively by walking the whole structure and
+    collecting anything that looks like a control/result record.
     """
     data = json.loads(Path(results_json_path).read_text(encoding="utf-8"))
 
-    rows: List[Dict[str, object]] = []
+    rows = []
 
-    # v2-style flattened summary if available
-    summaries = data.get("summaryDetails") or data.get("results") or []
-    if isinstance(summaries, list):
-        for item in summaries:
-            if not isinstance(item, dict):
-                continue
-            rows.append(
-                {
-                    "FilePath": item.get("filePath") or item.get("path") or "N/A",
-                    "Severity": item.get("severity") or item.get("scoreFactor") or "Unknown",
-                    "Control name": item.get("name") or item.get("controlName") or item.get("controlID") or "Unknown",
-                    "Failed resources": item.get("failedResources") or item.get("failedResourcesCount") or 0,
-                    "All Resources": item.get("allResources") or item.get("allResourcesCount") or 0,
-                    "Compliance score": item.get("complianceScore") or item.get("score") or "N/A",
-                }
+    def walk(obj):
+        if isinstance(obj, dict):
+            control_name = (
+                obj.get("name")
+                or obj.get("controlName")
+                or obj.get("controlID")
+                or obj.get("controlId")
             )
+            severity = obj.get("severity") or obj.get("scoreFactor")
+            failed = obj.get("failedResources") or obj.get("failedResourcesCount")
+            all_resources = obj.get("allResources") or obj.get("allResourcesCount")
+            score = obj.get("complianceScore") or obj.get("score")
+            filepath = obj.get("filePath") or obj.get("path")
 
-    # fallback for controlReports / nested structures
-    if not rows:
-        reports = data.get("controlReports") or data.get("controlSummaries") or []
-        for report in reports:
-            if not isinstance(report, dict):
-                continue
-            rows.append(
-                {
-                    "FilePath": report.get("filePath") or report.get("baseObject", {}).get("path", "N/A"),
-                    "Severity": report.get("severity") or "Unknown",
-                    "Control name": report.get("name") or report.get("controlName") or report.get("controlID") or "Unknown",
-                    "Failed resources": report.get("failedResources") or report.get("failedResourcesCount") or 0,
-                    "All Resources": report.get("allResources") or report.get("allResourcesCount") or 0,
-                    "Compliance score": report.get("complianceScore") or report.get("score") or "N/A",
-                }
-            )
+            if control_name and (
+                failed is not None or all_resources is not None or score is not None
+            ):
+                rows.append(
+                    {
+                        "FilePath": filepath or "N/A",
+                        "Severity": severity or "Unknown",
+                        "Control name": control_name,
+                        "Failed resources": failed if failed is not None else 0,
+                        "All Resources": all_resources if all_resources is not None else 0,
+                        "Compliance score": score if score is not None else "N/A",
+                    }
+                )
+
+            for value in obj.values():
+                walk(value)
+
+        elif isinstance(obj, list):
+            for item in obj:
+                walk(item)
+
+    walk(data)
+
+    # Remove duplicates
+    deduped = []
+    seen = set()
+    for row in rows:
+        key = (
+            row["FilePath"],
+            row["Severity"],
+            row["Control name"],
+            row["Failed resources"],
+            row["All Resources"],
+            str(row["Compliance score"]),
+        )
+        if key not in seen:
+            seen.add(key)
+            deduped.append(row)
 
     return pd.DataFrame(
-        rows,
+        deduped,
         columns=[
             "FilePath",
             "Severity",

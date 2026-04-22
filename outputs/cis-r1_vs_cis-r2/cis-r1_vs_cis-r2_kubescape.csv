@@ -1,1 +1,11 @@
 FilePath,Severity,Control name,Failed resources,All Resources,Compliance score
+N/A,High,Forbidden Container Registries,0,0,0.0
+N/A,High,Resource limits,0,0,18.441559
+N/A,High,Applications credentials in configuration files,0,0,92.028984
+N/A,Medium,Non-root containers,0,0,1.5584415
+N/A,High,List Kubernetes secrets,0,0,77.899345
+N/A,Medium,Ingress and Egress blocked,0,0,19.905214
+N/A,High,HostPath mount,0,0,95.32468
+N/A,High,Resources CPU limit and request,0,0,18.701298
+N/A,Medium,Ensure that default service accounts are not actively used,0,0,83.870964
+N/A,Medium,Missing network policy,0,0,42.6146
