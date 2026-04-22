@@ -1,0 +1,85 @@
+element1:
+  name: authorization
+  requirements:
+  - 3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow
+    (Automated) 42
+element2:
+  name: audit
+  requirements:
+  - Audit Procedure ........................................................................................................................
+    12
+  - 2.1.1 Enable audit Logs (Automated) ........................................................................................
+    18
+  - 2.1.2 Ensure audit logs are collected and managed (Manual)..................................................
+    21
+  - 6.1 Logging and Auditing...............................................................................................................
+    122
+element3:
+  name: logging
+  requirements:
+  - 2.1 Logging ............................................................................................................................................
+    17
+  - 6 Monitoring and Logging.........................................................................................................
+    121
+  - 6.1 Logging and Auditing...............................................................................................................
+    122
+  - 6.1.1 Enable logging for all relevant events (Automated).........................................................
+    123
+element4:
+  name: network
+  requirements:
+  - 4.2.4 Minimize the admission of containers wishing to share the host network namespace
+  - 4.3.1 Ensure CNI plugin supports network policies. (Manual) ..................................................
+    97
+  - 4.3.2 Ensure that all Namespaces have Network Policies defined (Automated) ......................
+    99
+element5:
+  name: container
+  requirements:
+  - 4.2.1 Minimize the admission of privileged containers (Automated) .........................................
+    85
+  - 4.2.2 Minimize the admission of containers wishing to share the host process ID
+    namespace
+  - 4.2.3 Minimize the admission of containers wishing to share the host IPC namespace
+  - 4.2.4 Minimize the admission of containers wishing to share the host network namespace
+  - 4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated)
+    .......... 94
+element6:
+  name: privilege
+  requirements:
+  - 4.2.1 Minimize the admission of privileged containers (Automated) .........................................
+    85
+  - 4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated)
+    .......... 94
+element7:
+  name: secret
+  requirements:
+  - 4.1.2 Minimize access to secrets (Automated) .........................................................................
+    68
+  - 4.4 Secrets Management ....................................................................................................................
+    101
+  - 4.4.1 Prefer using secrets as files over secrets as environment variables (Automated)
+    ........ 102
+  - 4.4.2 Consider external secret storage (Manual) ....................................................................
+    104
+element8:
+  name: certificate
+  requirements:
+  - 3.2.8 Ensure that the --rotate-certificates argument is not present or is set
+    to true (Automated)
+  - 3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated)
+    .... 61
+element9:
+  name: account
+  requirements:
+  - 4.1 RBAC and Service Accounts.........................................................................................................
+    65
+  - 4.1.5 Ensure that default service accounts are not actively used. (Automated)
+    ....................... 74
+  - 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Automated)
+    76
+element10:
+  name: monitoring
+  requirements:
+  - 6 Monitoring and Logging.........................................................................................................
+    121

@@ -1,0 +1,32 @@
+account,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.1 RBAC and Service Accounts......................................................................................................... 64
+account,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.1.5 Ensure that default service accounts are not actively used. (Automated) ....................... 73
+account,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Automated) 75
+account,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.1 RBAC and Service Accounts......................................................................................................... 65
+account,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.1.5 Ensure that default service accounts are not actively used. (Automated) ....................... 74
+account,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Automated) 76
+audit,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,2.1.1 Enable audit Logs (Automated) ........................................................................................ 17
+audit,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,2.1.2 Ensure audit logs are collected and managed (Manual).................................................. 20
+audit,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,6.1 Logging and Auditing.................................................................................................................... 122
+audit,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,2.1.1 Enable audit Logs (Automated) ........................................................................................ 18
+audit,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,2.1.2 Ensure audit logs are collected and managed (Manual).................................................. 21
+audit,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,6.1 Logging and Auditing............................................................................................................... 122
+authorization,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 41
+authorization,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 42
+certificate,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 60
+certificate,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 61
+container,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.2.1 Minimize the admission of privileged containers (Automated) ......................................... 84
+container,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) .......... 93
+container,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.2.1 Minimize the admission of privileged containers (Automated) ......................................... 85
+container,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) .......... 94
+logging,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,2.1 Logging ............................................................................................................................................ 16
+logging,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,6.1 Logging and Auditing.................................................................................................................... 122
+logging,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,6.1.1 Enable logging for all relevant events (Automated)......................................................... 124
+logging,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,2.1 Logging ............................................................................................................................................ 17
+logging,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,6.1 Logging and Auditing............................................................................................................... 122
+logging,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,6.1.1 Enable logging for all relevant events (Automated)......................................................... 123
+privilege,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.2.1 Minimize the admission of privileged containers (Automated) ......................................... 84
+privilege,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) .......... 93
+privilege,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.2.1 Minimize the admission of privileged containers (Automated) ......................................... 85
+privilege,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) .......... 94
+secret,PRESENT-IN-cis-r2-kdes.yaml,ABSENT-IN-cis-r3-kdes.yaml,4.1.2 Minimize access to secrets (Automated) ......................................................................... 67
+secret,ABSENT-IN-cis-r2-kdes.yaml,PRESENT-IN-cis-r3-kdes.yaml,4.1.2 Minimize access to secrets (Automated) ......................................................................... 68
